@@ -1,0 +1,44 @@
+class conta:
+    def __init__(self, tipo_conta):
+        self.tipo_conta = tipo_conta
+        self.saldo = 0
+    
+    def deposito(self, valor):
+        self.saldo += valor
+        print("Valor depositado: {}".format(valor))
+    
+    def retirada(self, valor):
+        if self.saldo < valor:
+            print("Saldo insuficiente")
+        else:
+            self.saldo -= valor
+            print("Valor retirado: {}".format(valor))
+        
+    
+def extrato(corrente, salario, poupanca, investimento):
+    print("Tipo de conta \t    saldo (R$)")
+    print("corrente \t\t{}".format(corrente))
+    print("salario \t\t{}".format(salario))
+    print("poupanca \t\t{}".format(poupanca))
+    print("investimento \t\t{}".format(investimento))
+
+    
+def main():
+    corrente = conta("corrente")
+    salario = conta("salario")
+    poupanca = conta("poupanca")
+    investimento = conta("investimento")
+
+    corrente.deposito(100)
+    salario.deposito(200)
+    poupanca.deposito(300)
+    investimento.deposito(400)
+
+    corrente.retirada(150)
+    salario.retirada(250)
+    poupanca.retirada(350)
+    investimento.retirada(450)
+    extrato(corrente.saldo, salario.saldo, poupanca.saldo, investimento.saldo)
+
+if __name__ == "__main__":
+    main()
